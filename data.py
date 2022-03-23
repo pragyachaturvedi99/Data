@@ -81,7 +81,7 @@ class Data:
     wf=np.concatenate((c,cs),axis=0)
       
     # opening the csv file in 'w+' mode
-    file = open('/content/Data_analysis.csv', 'w+', newline ='')
+    file = open('Data_analysis.csv', 'w+', newline ='')
     fields=[['Category_name','count']] 
     # writing the data into the file
     with file:  
