@@ -29,8 +29,8 @@ class Data:
       #remove comments when using with gcs bucket
       #ann_path="https://storage.cloud.google.com/tfrecords_and_logs/coco_instances_for_tasks/task_"+task_id+"_instances_default.json"
       #img_path="https://storage.cloud.google.com/medanta_images/Tasks/Task_"+task_id+"_readscan_309im_18patient/"+task_name
-      ann_path="/content/coco_instances_for_tasks_task_"+task_id+"_instances_default.json"
-      img_path="/content/Tasks_Task_"+task_id+"_readscan_309im_18patient_"+task_name
+      ann_path="Testing/coco_instances_for_tasks_task_"+task_id+"_instances_default.json"
+      img_path="Testing/Tasks_Task_"+task_id+"_readscan_309im_18patient_"+task_name
       with open(ann_path) as json_file:
         data = json.load(json_file)
       ann_dict=data['annotations']
@@ -60,7 +60,7 @@ class Data:
     #remove comment when using with gcs bucket
     #path="https://storage.cloud.google.com/tfrecords_and_logs/coco_instances_for_tasks/task_"+task_id+"_instances_default.json"
     #path for trial of pipeline remove when using gcs bucket
-    path="/content/coco_instances_for_tasks_task_"+task_id+"_instances_default.json"
+    path="Testing/coco_instances_for_tasks_task_"+task_id+"_instances_default.json"
     with open(path) as json_file:
       data = json.load(json_file)
     temp='category_id'
