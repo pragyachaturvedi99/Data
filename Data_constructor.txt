@@ -1,0 +1,4 @@
+**Welcome to Data library **
+This library contains the following function
+	analysis(task_id)-> This function returns Data_analysis.csv file containing two rows <Categories and count> respectively corresponding to the task_id passed in the parameter.
+	visualize(task_id,task_name)->This function returns the image corresponding to the task_name and task_id with and without annotation mask
