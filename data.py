@@ -88,5 +88,5 @@ class Data:
       write = csv.writer(file)
       write.writerows(fields)
       write.writerows(np.transpose(wf))
-    print(pd.read_csv('/content/Data_analysis.csv'))
+    print(pd.read_csv('Data_analysis.csv'))
     return
