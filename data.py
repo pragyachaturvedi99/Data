@@ -20,7 +20,7 @@ import numpy as np
 
 class Data:
   def __init__(self):
-    f = open('/content/Data_constructor.txt', 'r')
+    f = open('Data_constructor.txt', 'r')
     content = f.read()
     print(content)
     f.close()
