@@ -1,3 +1,6 @@
+#import libraries needed, cv2 can be skipped in this
+# pip install pycocotools or copy the git lib in case not already in your system
+#pip install pycocotools
 import pandas as pd 
 import os
 from pycocotools.coco import COCO
@@ -7,22 +10,25 @@ from pathlib import Path
 import csv
 import json
 import numpy as np
-import cv2 as cv
-from matplotlib import pyplot as plt
+#import cv2 as cv
 import gcsfs
-from matplotlib import pyplot as plt
 
 class Data:
   def __init__(self):
     self
+    #This constructor displays a rough instruction mannual for user on instance. Remove comments if needed
     '''f = open('pc_data/Data_constructor.txt', 'r')
     content = f.read()
     print(content)
     f.close()'''
     
+    
   def analysis(self, task_id):
+    #self.load annotation returns json file corrresponding to the task_id in dictionary as well as coco format for ease in usage
      coco,dictionary_coco=self.load_annotation(task_id)
+    #category count list will be returned in list format by this function. 
      final_category_count_list=self.get_categories_counts(coco,dictionary_coco)
+    #F
      print(self.write_analysis_csv(final_category_count_list))    
      return  
     
