@@ -1,6 +1,3 @@
-#import libraries needed, cv2 can be skipped in this
-# pip install pycocotools or copy the git lib in case not already in your system
-#pip install pycocotools
 import pandas as pd 
 import os
 from pycocotools.coco import COCO
@@ -10,26 +7,23 @@ from pathlib import Path
 import csv
 import json
 import numpy as np
-#import cv2 as cv
+import cv2 as cv
+from matplotlib import pyplot as plt
 import gcsfs
+from matplotlib import pyplot as plt
 
 class Data:
   def __init__(self):
     self
-    #This constructor displays a rough instruction mannual for user on instance. Remove comments if needed
     '''f = open('pc_data/Data_constructor.txt', 'r')
     content = f.read()
     print(content)
     f.close()'''
     
-    
   def analysis(self, task_id):
-    #self.load annotation returns json file corrresponding to the task_id in dictionary as well as coco format for ease in usage
      coco,dictionary_coco=self.load_annotation(task_id)
-    #category count list will be returned in list format by this function. 
      final_category_count_list=self.get_categories_counts(coco,dictionary_coco)
-    #F
-     print(self.write_analysis_csv(final_category_count_list))    
+     print(self.write_analysis_csv(final_category_count_list,task_id))    
      return  
     
   def visualize(self,task_id,tile_id):
@@ -64,15 +58,17 @@ class Data:
     final_category_count_list=np.concatenate((categories_name,counts),axis=0)
     return final_category_count_list
     
-  def write_analysis_csv(self,final_list):
-    file = open('Data_analysis.csv', 'w+', newline ='')
+  def write_analysis_csv(self,final_list,task_id):
+    task_id=str(task_id)
+    analysis_csv='Data_analysis'+task_id+'.csv'
+    file = open(analysis_csv, 'w+', newline ='')
     fields=[['Category_name','count']] 
     # writing the data into the file
     with file:
         write = csv.writer(file)
         write.writerows(fields)
         write.writerows(np.transpose(final_list))
-    return(pd.read_csv('Data_analysis.csv'))
+    return(pd.read_csv(analysis_csv))
        
   def get_annotation_path(self,task_id):
     task_id=str(task_id)
@@ -112,6 +108,3 @@ class Data:
      fig.add_subplot(1,2,2)
      plt.imshow(image)
      coco.showAnns(annotation, draw_bbox=False)
-         
-    
-        
